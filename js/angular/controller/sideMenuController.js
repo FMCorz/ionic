@@ -423,6 +423,18 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
         IONIC_BACK_PRIORITY.sideMenu
       );
     }
+
+    // Notify if the menu is open or closed.
+    if (self.isOpenLeft()) {
+      self.left && self.left.notifyVisible && self.left.notifyVisible();
+      self.right && self.right.notifyHidden && self.right.notifyHidden();
+    } else if (self.isOpenRight()) {
+      self.left && self.left.notifyHidden && self.left.notifyHidden();
+      self.right && self.right.notifyVisible && self.right.notifyVisible();
+    } else {
+      self.left && self.left.notifyHidden && self.left.notifyHidden();
+      self.right && self.right.notifyHidden && self.right.notifyHidden();
+    }
   });
 
   var deregisterInstance = $ionicSideMenuDelegate._registerInstance(

@@ -31,6 +31,12 @@
       if(this.el.style.zIndex !== '-1') {
         this.el.style.zIndex = '-1';
       }
+    },
+    notifyHidden: function() {
+      this.el.setAttribute('aria-hidden', true);
+    },
+    notifyVisible: function() {
+      this.el.setAttribute('aria-hidden', false);
     }
   });
 
