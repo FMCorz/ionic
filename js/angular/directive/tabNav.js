@@ -6,7 +6,7 @@ IonicModule
     require: ['^ionTabs', '^ionTab'],
     template:
     '<a ng-class="{\'tab-item-active\': isTabActive(), \'has-badge\':badge, \'tab-hidden\':isHidden()}" ' +
-      ' ng-disabled="disabled()" class="tab-item">' +
+      ' ng-disabled="disabled()" class="tab-item" role="tab" aria-selected="{{isTabActive() ? \'true\' : \'false\'}}">' +
       '<span class="badge {{badgeStyle}}" ng-if="badge">{{badge}}</span>' +
       '<i class="icon {{getIconOn()}}" ng-if="getIconOn() && isTabActive()"></i>' +
       '<i class="icon {{getIconOff()}}" ng-if="getIconOff() && !isTabActive()"></i>' +

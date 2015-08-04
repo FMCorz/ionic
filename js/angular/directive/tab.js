@@ -77,6 +77,7 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
       }
       var childElementCount = tabContentEle.childElementCount;
       element.empty();
+      element.attr('aria-hidden', true);
 
       var navViewName, isNavView;
       if (childElementCount) {
@@ -92,6 +93,7 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
         }
         if (!isNavView) tabContentEle.classList.add('pane');
         tabContentEle.classList.add('tab-content');
+        tabContentEle.setAttribute('role', 'tabpanel');
       }
 
       return function link($scope, $element, $attr, ctrls) {
@@ -154,6 +156,7 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
               // tab should be selected and is NOT in the DOM
               // create a new scope and append it
               childScope = $scope.$new();
+              tabContentEle.setAttribute('aria-expanded', true);
               childElement = jqLite(tabContentEle);
               $ionicViewSwitcher.viewEleIsActive(childElement, true);
               tabsCtrl.$element.append(childElement);
@@ -170,6 +173,7 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
             if ($ionicConfig.views.maxCache() > 0) {
               // keep the tabs in the DOM, only css hide it
               $ionicViewSwitcher.viewEleIsActive(childElement, false);
+              tabContentEle.setAttribute('aria-expanded', false);
 
             } else {
               // do not keep tabs in the DOM

@@ -58,7 +58,7 @@ function($ionicTabsDelegate, $ionicConfig) {
     compile: function(tElement) {
       //We cannot use regular transclude here because it breaks element.data()
       //inheritance on compile
-      var innerElement = jqLite('<div class="tab-nav tabs">');
+      var innerElement = jqLite('<div class="tab-nav tabs" role="tablist">');
       innerElement.append(tElement.contents());
 
       tElement.append(innerElement)
